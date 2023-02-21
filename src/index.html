@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/tasklist-project.esm.js"></script>
+  <script nomodule src="/build/tasklist-project.js"></script>
+</head>
+
+<body>
+  <add-task></add-task>
+  <task-filter></task-filter>
+  <task-list></task-list>
+  <script>
+    document.querySelector('task-list').tasks = ['Faire ses devoirs', 'Sortir le chien', 'Laver le linge'];
+  </script>
+
+</body>
+
+</html>
