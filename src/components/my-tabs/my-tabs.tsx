@@ -1,6 +1,6 @@
-import { Component, h, Listen, Element, Prop, Watch} from '@stencil/core';
+import { Component, h, Listen, Element, Prop, Watch } from '@stencil/core';
 
-import { TabActivateEvent } from "./my-tab"; 
+import { TabActivateEvent } from "./my-tab";
 
 @Component({
   tag: 'my-tabs',
@@ -9,12 +9,12 @@ import { TabActivateEvent } from "./my-tab";
 })
 export class MyTabs {
 
-  @Prop({mutable: true}) activeTab: string;
+  @Prop({ mutable: true }) activeTab: string;
   @Watch("activeTab")
   handleActivateTabChange(newValue: string) {
     const headings = this.getHeadings();
     headings.forEach(heading => {
-      if(heading.name === newValue) {
+      if (heading.name === newValue) {
         heading.active = true;
       } else {
         heading.active = false;
@@ -29,7 +29,7 @@ export class MyTabs {
     this.activeTab = e.detail.name;
   }
   componentDidLoad() {
-    if(this.activeTab === undefined) {
+    if (this.activeTab === undefined) {
       const headings = this.getHeadings();
       const haveActiveTab = headings.filter(heading => heading.active).length > 0;
       if (!haveActiveTab && headings.length > 0) {
@@ -38,7 +38,7 @@ export class MyTabs {
     } else {
       this.handleActivateTabChange(this.activeTab);
     }
-    
+
   }
   render() {
     return (
@@ -48,6 +48,6 @@ export class MyTabs {
     );
   }
 
-getHeadings = () => [].slice.call(this.Element.querySelector(".my-tabs-container").children)
-.filter(child => child.tagName.toLowerCase() ==="my-tab");
+  getHeadings = () => [].slice.call(this.Element.querySelector(".my-tabs-container").children)
+    .filter(child => child.tagName.toLowerCase() === "my-tab");
 }

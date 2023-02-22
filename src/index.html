@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/tasklist-project.esm.js"></script>
-    <script nomodule src="/build/tasklist-project.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    <link rel="stylesheet" href="build/stencil-tailwind.css" />
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
 
-  <body>
-    <my-tabs active-tab="Tab2">
-      <my-tab name="Tab1">Home</my-tab>
-      <my-tab name="Tab2" active>Task List</my-tab>
-    </my-tabs>
-    <br />
-    <task-list></task-list>
-    <br />
-    <add-task></add-task>
-    <script>
-      document.querySelector('task-list').tasks = ['Faire ses devoirs', 'Sortir le chien', 'Laver le linge'];
-      function handleTabActivate(e) {
-        console.log(e.detail.name);
-      }
-      document.addEventListener('tabActivate', handleTabActivate);
-    </script>
-  </body>
+  <script type="module" src="/build/tasklist-project.esm.js"></script>
+  <script nomodule src="/build/tasklist-project.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <link rel="stylesheet" href="build/stencil-tailwind.css" />
+</head>
+
+<body>
+  <my-tabs active-tab="Tab2">
+    <my-tab name="Tab1">Home</my-tab>
+    <my-tab name="Tab2" active>Task List</my-tab>
+  </my-tabs>
+  <br />
+  <task-list></task-list>
+  <br />
+  <add-task></add-task>
+  <script>
+    document.querySelector('task-list').tasks = ['Faire ses devoirs', 'Sortir le chien', 'Laver le linge'];
+    function handleTabActivate(e) {
+      console.log(e.detail.name);
+    }
+    document.addEventListener('tabActivate', handleTabActivate);
+  </script>
+</body>
+
 </html>

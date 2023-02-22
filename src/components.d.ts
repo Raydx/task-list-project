@@ -43,10 +43,6 @@ export interface MyTabCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMyTabElement;
 }
-export interface TaskListCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLTaskListElement;
-}
 declare global {
     interface HTMLAddTaskElement extends Components.AddTask, HTMLStencilElement {
     }
@@ -113,7 +109,6 @@ declare namespace LocalJSX {
         "activeTab"?: string;
     }
     interface TaskList {
-        "onTaskCompleted"?: (event: TaskListCustomEvent<string>) => void;
         "tasks"?: string[];
     }
     interface IntrinsicElements {
