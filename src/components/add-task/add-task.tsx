@@ -31,9 +31,11 @@ export class AddTask {
   render() {
     return (
       <form onSubmit={(event: Event) => this.handleSubmit(event)}>
-        <input type="text" value={this.value} onInput={(event) => this.handleChange(event)} placeholder="Ajouter une tâche" />
-        <button type="submit">Ajouter</button>
-      </form>
+        <div class="relative">
+            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 p-2" value={this.value} onInput={(event) => this.handleChange(event)} placeholder="Ajouter une tâche" />
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-r-lg text-sm px-4 py-2">Ajouter</button>
+        </div>
+      </form>   
     );
   }
 }

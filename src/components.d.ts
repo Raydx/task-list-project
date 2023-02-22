@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TabActivateEvent } from "./components/my-tabs/my-tab";
+export { TabActivateEvent } from "./components/my-tabs/my-tab";
 export namespace Components {
     interface AddTask {
     }
@@ -22,7 +24,12 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface TaskFilter {
+    interface MyTab {
+        "active": boolean;
+        "name": string;
+    }
+    interface MyTabs {
+        "activeTab": string;
     }
     interface TaskList {
         "tasks": string[];
@@ -31,6 +38,10 @@ export namespace Components {
 export interface AddTaskCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLAddTaskElement;
+}
+export interface MyTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyTabElement;
 }
 export interface TaskListCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -49,11 +60,17 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLTaskFilterElement extends Components.TaskFilter, HTMLStencilElement {
+    interface HTMLMyTabElement extends Components.MyTab, HTMLStencilElement {
     }
-    var HTMLTaskFilterElement: {
-        prototype: HTMLTaskFilterElement;
-        new (): HTMLTaskFilterElement;
+    var HTMLMyTabElement: {
+        prototype: HTMLMyTabElement;
+        new (): HTMLMyTabElement;
+    };
+    interface HTMLMyTabsElement extends Components.MyTabs, HTMLStencilElement {
+    }
+    var HTMLMyTabsElement: {
+        prototype: HTMLMyTabsElement;
+        new (): HTMLMyTabsElement;
     };
     interface HTMLTaskListElement extends Components.TaskList, HTMLStencilElement {
     }
@@ -64,7 +81,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "add-task": HTMLAddTaskElement;
         "my-component": HTMLMyComponentElement;
-        "task-filter": HTMLTaskFilterElement;
+        "my-tab": HTMLMyTabElement;
+        "my-tabs": HTMLMyTabsElement;
         "task-list": HTMLTaskListElement;
     }
 }
@@ -86,7 +104,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface TaskFilter {
+    interface MyTab {
+        "active"?: boolean;
+        "name"?: string;
+        "onTabActivate"?: (event: MyTabCustomEvent<TabActivateEvent>) => void;
+    }
+    interface MyTabs {
+        "activeTab"?: string;
     }
     interface TaskList {
         "onTaskCompleted"?: (event: TaskListCustomEvent<string>) => void;
@@ -95,7 +119,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "add-task": AddTask;
         "my-component": MyComponent;
-        "task-filter": TaskFilter;
+        "my-tab": MyTab;
+        "my-tabs": MyTabs;
         "task-list": TaskList;
     }
 }
@@ -105,7 +130,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "add-task": LocalJSX.AddTask & JSXBase.HTMLAttributes<HTMLAddTaskElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "task-filter": LocalJSX.TaskFilter & JSXBase.HTMLAttributes<HTMLTaskFilterElement>;
+            "my-tab": LocalJSX.MyTab & JSXBase.HTMLAttributes<HTMLMyTabElement>;
+            "my-tabs": LocalJSX.MyTabs & JSXBase.HTMLAttributes<HTMLMyTabsElement>;
             "task-list": LocalJSX.TaskList & JSXBase.HTMLAttributes<HTMLTaskListElement>;
         }
     }
